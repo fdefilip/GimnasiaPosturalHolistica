@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnasia Postural Holística - Salud Integral</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements Tailwind can't handle easily */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+        }
+        
+        .before-after-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .before-after-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+        
+        .before-after-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+        }
+        
+        .slider-handle::after {
+            content: "↔";
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: #4f46e5;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Animation for testimonials */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* Calendar styling */
+        .calendar-day {
+            transition: all 0.2s ease;
+        }
+        
+        .calendar-day:hover {
+            transform: scale(1.05);
+            background-color: #4f46e5;
+            color: white;
+        }
+        
+        .active-day {
+            background-color: #4f46e5;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-spa text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">Gimnasia Postural Holística</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Inicio</a>
+                    <a href="#about" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Sobre Nosotros</a>
+                    <a href="#classes" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Clases</a>
+                    <a href="#pricing" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Membresías</a>
+                    <a href="#gallery" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Galería</a>
+                    <a href="#blog" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Blog</a>
+                    <a href="#contact" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Contacto</a>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-300">Reservar Clase</button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-900 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#about" class="text-gray-900 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Sobre Nosotros</a>
+                <a href="#classes" class="text-gray-900 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Clases</a>
+                <a href="#pricing" class="text-gray-900 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Membresías</a>
+                <a href="#gallery" class="text-gray-900 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Galería</a>
+                <a href="#blog" class="text-gray-900 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#contact" class="text-gray-900 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+                <button class="bg-indigo-600 text-white w-full px-4 py-2 rounded-md text-base font-medium hover:bg-indigo-700 transition duration-300 mt-2">Reservar Clase</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white h-screen flex items-center justify-center">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">Transforma tu cuerpo y mente</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto fade-in">Descubre el poder de la gimnasia postural holística con Lourdes García</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300">Empieza Hoy</button>
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300">Ver Clases</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Sobre Gimnasia Postural Holística</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Un enfoque integral para tu bienestar físico y mental</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Gimnasia Postural" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Nuestra Filosofía</h3>
+                    <p class="text-gray-600 mb-6">En Gimnasia Postural Holística, creemos que el verdadero bienestar proviene de la armonía entre cuerpo, mente y espíritu. Nuestro método combina técnicas de gimnasia postural, conciencia corporal y respiración para lograr una transformación completa.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                <i class="fas fa-heartbeat text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-900">Enfoque Personalizado</h4>
+                                <p class="mt-1 text-gray-600">Cada programa se adapta a tus necesidades específicas y objetivos personales.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                <i class="fas fa-leaf text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-900">Resultados Duraderos</h4>
+                                <p class="mt-1 text-gray-600">No solo te ayudamos a verte mejor, sino a sentirte mejor a largo plazo.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                <i class="fas fa-users text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-900">Comunidad de Apoyo</h4>
+                                <p class="mt-1 text-gray-600">Únete a una comunidad de personas que comparten tus mismos objetivos de bienestar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainer Profile -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Conoce a tu Entrenadora</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Lourdes García - Especialista en Gimnasia Postural</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Lourdes García" class="rounded-lg shadow-xl w-full max-w-md h-auto object-cover">
+                        <div class="absolute -bottom-5 -right-5 bg-indigo-600 text-white p-4 rounded-lg shadow-lg">
+                            <span class="block text-xl font-bold">15+</span>
+                            <span class="block text-sm">Años de Experiencia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Lourdes García</h3>
+                    <p class="text-gray-600 mb-6">Licenciada en Educación Física con especialización en Posturología y Reeducación Postural Global. Certificada en Pilates, Yoga Terapéutico y Técnicas de Respiración Consciente.</p>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-900 mb-3">Especialidades:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Reeducación Postural</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Pilates Terapéutico</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Yoga para la Columna</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Gimnasia Correctiva</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Consciencia Corporal</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-indigo-100 rounded-full p-3 mr-4">
+                                    <i class="fas fa-graduation-cap text-indigo-600"></i>
+                                </div>
+                                <h5 class="font-medium text-gray-900">Formación Académica</h5>
+                            </div>
+                            <p class="text-gray-600">Licenciada en Educación Física (UNLP), Postgrado en Posturología (UBA), Certificación en RPG (Método Souchard).</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-indigo-100 rounded-full p-3 mr-4">
+                                    <i class="fas fa-trophy text-indigo-600"></i>
+                                </div>
+                                <h5 class="font-medium text-gray-900">Logros</h5>
+                            </div>
+                            <p class="text-gray-600">Más de 500 pacientes tratados con éxito, ponente en congresos internacionales de posturología.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Class Schedule -->
+    <section id="classes" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Horario de Clases</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Encuentra la clase perfecta para ti</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Calendario Mensual</h3>
+                        <div class="flex items-center space-x-4">
+                            <button id="prev-month" class="p-2 rounded-full hover:bg-gray-100">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span id="current-month" class="font-medium">Junio 2023</span>
+                            <button id="next-month" class="p-2 rounded-full hover:bg-gray-100">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-7 gap-2 mb-4">
+                        <div class="text-center font-medium text-gray-500 py-2">Lun</div>
+                        <div class="text-center font-medium text-gray-500 py-2">Mar</div>
+                        <div class="text-center font-medium text-gray-500 py-2">Mié</div>
+                        <div class="text-center font-medium text-gray-500 py-2">Jue</div>
+                        <div class="text-center font-medium text-gray-500 py-2">Vie</div>
+                        <div class="text-center font-medium text-gray-500 py-2">Sáb</div>
+                        <div class="text-center font-medium text-gray-500 py-2">Dom</div>
+                    </div>
+                    
+                    <div id="calendar-days" class="grid grid-cols-7 gap-2">
+                        <!-- Calendar days will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Class 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="h-48 bg-indigo-600 flex items-center justify-center">
+                        <i class="fas fa-spa text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Postura Consciente</h3>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Principiantes</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Clase enfocada en la toma de conciencia corporal y corrección postural básica.</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>Lunes y Miércoles - 9:00 a 10:00</span>
+                        </div>
+                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition duration-300">Reservar</button>
+                    </div>
+                </div>
+                
+                <!-- Class 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="h-48 bg-indigo-600 flex items-center justify-center">
+                        <i class="fas fa-yin-yang text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Yoga Postural</h3>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Intermedio</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Fusión de yoga tradicional con técnicas de corrección postural para mayor alineación.</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>Martes y Jueves - 18:00 a 19:30</span>
+                        </div>
+                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition duration-300">Reservar</button>
+                    </div>
+                </div>
+                
+                <!-- Class 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="h-48 bg-indigo-600 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">RPG Avanzado</h3>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Avanzado</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Reeducación Postural Global para quienes buscan un trabajo profundo de cadenas musculares.</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>Viernes - 10:00 a 11:30</span>
+                        </div>
+                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition duration-300">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Membresías</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Elige el plan que mejor se adapte a tus necesidades</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan Básico -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-900 text-center">Básico</h3>
+                        <div class="mt-4 text-center">
+                            <span class="text-4xl font-extrabold text-gray-900">$3,500</span>
+                            <span class="text-gray-500">/mes</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>4 clases al mes</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Acceso a material teórico</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Evaluación postural inicial</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times text-gray-300 mr-3"></i>
+                                <span>Clases grupales ilimitadas</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times text-gray-300 mr-3"></i>
+                                <span>Seguimiento personalizado</span>
+                            </li>
+                        </ul>
+                        <button class="w-full mt-8 bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-md font-medium transition duration-300">Elegir Plan</button>
+                    </div>
+                </div>
+                
+                <!-- Plan Premium -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform scale-105 relative">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white px-4 py-1 text-sm font-bold rounded-bl-lg">
+                        POPULAR
+                    </div>
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-900 text-center">Premium</h3>
+                        <div class="mt-4 text-center">
+                            <span class="text-4xl font-extrabold text-gray-900">$6,500</span>
+                            <span class="text-gray-500">/mes</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Clases grupales ilimitadas</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>1 clase personalizada al mes</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Evaluación postural mensual</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Acceso completo a material</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Seguimiento personalizado</span>
+                            </li>
+                        </ul>
+                        <button class="w-full mt-8 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-md font-medium transition duration-300">Elegir Plan</button>
+                    </div>
+                </div>
+                
+                <!-- Plan Personalizado -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-900 text-center">Personalizado</h3>
+                        <div class="mt-4 text-center">
+                            <span class="text-4xl font-extrabold text-gray-900">$9,000</span>
+                            <span class="text-gray-500">/mes</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>2 clases personales por semana</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Plan 100% personalizado</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Seguimiento semanal</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Plan nutricional incluido</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Acceso premium a todo</span>
+                            </li>
+                        </ul>
+                        <button class="w-full mt-8 bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-md font-medium transition duration-300">Elegir Plan</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-indigo-50 rounded-lg p-8 text-center">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-4">¿No estás seguro?</h3>
+                <p class="text-gray-700 mb-6">Prueba una clase gratuita y descubre si nuestro método es para ti.</p>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition duration-300">Reservar Clase de Prueba</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Gallery -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Transformaciones</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Resultados reales de nuestros alumnos</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Transformation 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="before-after-container h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="After" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Before" class="w-full h-full object-cover">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">María, 42 años</h3>
+                        <p class="text-gray-600 mb-4">"Después de 6 meses de trabajo postural, mi dolor crónico de espalda desapareció completamente."</p>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>Antes</span>
+                            <span>Después (6 meses)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Transformation 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="before-after-container h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="After" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Before" class="w-full h-full object-cover">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Carlos, 35 años</h3>
+                        <p class="text-gray-600 mb-4">"La corrección de mi postura no solo mejoró mi apariencia, sino que incrementó mi rendimiento deportivo."</p>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>Antes</span>
+                            <span>Después (4 meses)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="h-48 bg-gray-200 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Gallery 1" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="h-48 bg-gray-200 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Gallery 2" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="h-48 bg-gray-200 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Gallery 3" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="h-48 bg-gray-200 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Gallery 4" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                    Ver Más Transformaciones
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-indigo-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold sm:text-4xl">Lo que dicen nuestros alumnos</h2>
+                <p class="mt-4 max-w-2xl text-xl opacity-90 mx-auto">Historias reales de transformación y bienestar</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold">Ana Martínez</h4>
+                            <p class="text-indigo-200">Alumna desde 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-indigo-50">"Después de años de sufrir dolores de espalda, encontré alivio en las clases de Lourdes. Su enfoque holístico cambió completamente mi postura y mi calidad de vida."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold">Jorge Rodríguez</h4>
+                            <p class="text-indigo-200">Alumno desde 2022</p>
+                        </div>
+                    </div>
+                    <p class="text-indigo-50">"Como deportista profesional, necesitaba corregir mi postura para mejorar mi rendimiento. Los resultados fueron visibles desde el primer mes."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold">Lucía Fernández</h4>
+                            <p class="text-indigo-200">Alumna desde 2020</p>
+                        </div>
+                    </div>
+                    <p class="text-indigo-50">"No solo mejoré mi postura, sino que aprendí a escuchar mi cuerpo. Las clases son terapéuticas y transformadoras. Recomiendo 100% a Lourdes."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Blog -->
+    <section id="blog" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Blog de Nutrición</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Consejos para una alimentación consciente y saludable</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80" 
+                             alt="Alimentos antiinflamatorios" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>15 Junio 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>Nutrición</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Alimentos Antiinflamatorios para el Dolor Postural</h3>
+                        <p class="text-gray-600 mb-4">Descubre cómo ciertos alimentos pueden ayudarte a reducir la inflamación y mejorar tu recuperación muscular después del trabajo postural.</p>
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-800 transition duration-300 inline-flex items-center">
+                            Leer más
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80" 
+                             alt="Hidratación" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>2 Junio 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>Hidratación</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">La Importancia de la Hidratación en la Movilidad Articular</h3>
+                        <p class="text-gray-600 mb-4">El agua no solo hidrata, también lubrica tus articulaciones. Aprende cómo mantenerte hidratado para mejorar tu flexibilidad y movilidad.</p>
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-800 transition duration-300 inline-flex items-center">
+                            Leer más
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80" 
+                             alt="Suplementos" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>20 Mayo 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>Suplementos</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Suplementos Naturales para la Recuperación Muscular</h3>
+                        <p class="text-gray-600 mb-4">Magnesio, colágeno y otros suplementos que pueden apoyar tu trabajo postural y acelerar la recuperación después del ejercicio.</p>
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-800 transition duration-300 inline-flex items-center">
+                            Leer más
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                    Ver Todos los Artículos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Library -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Biblioteca de Videos</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Ejercicios y rutinas que puedes hacer en casa</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="relative pb-[56.25%] bg-gray-200">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Rutina Matutina de 10 Minutos</h3>
+                        <p class="text-gray-600 mb-4">Empieza tu día con esta secuencia suave para despertar tu cuerpo y mejorar tu postura.</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500">
+                            <span><i class="far fa-clock mr-1"></i> 10 min</span>
+                            <span><i class="far fa-eye mr-1"></i> 1.2K vistas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="relative pb-[56.25%] bg-gray-200">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Ejercicios para el Dolor de Espalda</h3>
+                        <p class="text-gray-600 mb-4">Alivia la tensión en tu espalda baja con estos movimientos suaves y efectivos.</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500">
+                            <span><i class="far fa-clock mr-1"></i> 15 min</span>
+                            <span><i class="far fa-eye mr-1"></i> 2.4K vistas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="relative pb-[56.25%] bg-gray-200">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Respiración Consciente para la Postura</h3>
+                        <p class="text-gray-600 mb-4">Aprende técnicas de respiración que mejoran tu alineación postural y reducen el estrés.</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500">
+                            <span><i class="far fa-clock mr-1"></i> 8 min</span>
+                            <span><i class="far fa-eye mr-1"></i> 956 vistas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                    Ver Más Videos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="contact" class="py-20 bg-indigo-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-extrabold sm:text-4xl mb-6">Reserva tu Clase</h2>
+                    <p class="text-lg mb-8 opacity-90">Completa el formulario y nos pondremos en contacto contigo para confirmar tu reserva y responder cualquier pregunta que puedas tener.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-800 rounded-full p-3">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Ubicación</h4>
+                                <p class="mt-1 opacity-80">Av. Corrientes 1234, Buenos Aires</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-800 rounded-full p-3">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Teléfono</h4>
+                                <p class="mt-1 opacity-80">+54 11 1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-800 rounded-full p-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Email</h4>
+                                <p class="mt-1 opacity-80">info@gimnasiapostural.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl p-8 text-gray-900">
+                    <h3 class="text-2xl font-bold mb-6">Formulario de Contacto</h3>
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Servicio de Interés</label>
+                            <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                                <option>Clase de Prueba</option>
+                                <option>Postura Consciente</option>
+                                <option>Yoga Postural</option>
+                                <option>RPG Avanzado</option>
+                                <option>Consulta Personalizada</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-md font-medium transition duration-300">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Gimnasia Postural Holística</h3>
+                    <p class="text-gray-400">Transformando vidas a través de la corrección postural y el bienestar integral desde 2010.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Inicio</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Sobre Nosotros</a></li>
+                        <li><a href="#classes" class="text-gray-400 hover:text-white transition duration-300">Clases</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition duration-300">Membresías</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition duration-300">Galería</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Horario</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex justify-between">
+                            <span>Lunes - Viernes</span>
+                            <span>7:00 - 21:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sábado</span>
+                            <span>9:00 - 15:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Domingo</span>
+                            <span>Cerrado</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Suscríbete para recibir consejos de salud postural y promociones especiales.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Tu email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-900">
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-md transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Gimnasia Postural Holística. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Política de Privacidad</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Before & After slider functionality
+        document.querySelectorAll('.before-after-container').forEach(container => {
+            const slider = container.querySelector('.before-after-slider');
+            const handle = container.querySelector('.slider-handle');
+            let isDragging = false;
+
+            function moveSlider(e) {
+                if (!isDragging) return;
+                
+                let containerRect = container.getBoundingClientRect();
+                let x = e.clientX - containerRect.left;
+                let percentage = (x / containerRect.width) * 100;
+                
+                // Limit between 0 and 100
+                percentage = Math.max(0, Math.min(100, percentage));
+                
+                slider.style.width = percentage + '%';
+                handle.style.left = percentage + '%';
+            }
+
+            handle.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            document.addEventListener('mousemove', moveSlider);
+
+            // Touch support
+            handle.addEventListener('touchstart', () => {
+                isDragging = true;
+            });
+
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                let touch = e.touches[0];
+                moveSlider(touch);
+            });
+        });
+
+        // Calendar functionality
+        const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        const dayNames = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+        
+        let currentDate = new Date();
+        
+        function renderCalendar() {
+            const calendarDays = document.getElementById('calendar-days');
+            const currentMonthElement = document.getElementById('current-month');
+            
+            // Set current month text
+            currentMonthElement.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            
+            // Clear previous days
+            calendarDays.innerHTML = '';
+            
+            // Get first day of month and total days in month
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+            const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+            
+            // Get days from previous month
+            const prevMonthDays = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+            
+            // Add days from previous month
+            for (let i = firstDay - 1; i >= 0; i--) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day text-center py-2 text-gray-400';
+                dayElement.textContent = prevMonthDays - i;
+                calendarDays.appendChild(dayElement);
+            }
+            
+            // Add days from current month
+            const today = new Date();
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day text-center py-2 cursor-pointer';
+                dayElement.textContent = i;
+                
+                // Highlight today
+                if (i === today.getDate() && currentDate.getMonth() === today.getMonth() && currentDate.getFullYear() === today.getFullYear()) {
+                    dayElement.classList.add('active-day');
+                }
+                
+                dayElement.addEventListener('click', () => {
+                    document.querySelectorAll('.calendar-day').forEach(day => {
+                        day.classList.remove('active-day');
+                    });
+                    dayElement.classList.add('active-day');
+                });
+                
+                calendarDays.appendChild(dayElement);
+            }
+            
+            // Calculate total cells needed (6 rows)
+            const totalCells = 42; // 6 rows x 7 days
+            const daysSoFar = firstDay + daysInMonth;
+            const nextMonthDays = totalCells - daysSoFar;
+            
+            // Add days from next month
+            for (let i = 1; i <= nextMonthDays; i++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day text-center py-2 text-gray-400';
+                dayElement.textContent = i;
+                calendarDays.appendChild(dayElement);
+            }
+        }
+        
+        // Previous month button
+        document.getElementById('prev-month').addEventListener('click', () => {
+            currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+            renderCalendar();
+        });
+        
+        // Next month button
+        document.getElementById('next-month').addEventListener('click', () => {
+            currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+            renderCalendar();
+        });
+        
+        // Initial render
+        renderCalendar();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initial check
+        animateOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=fdefilip/gimanasiaposturalholistica" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
